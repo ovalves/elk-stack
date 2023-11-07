@@ -1,0 +1,27 @@
+metricbeat.modules:
+- module: docker
+  metricsets: ["container", "cpu", "diskio", "event", "healthcheck", "image", "info", "memory", "network"]
+  hosts: ["unix:///var/run/docker.sock"]
+  username: "elastic"
+  password: "elastic"
+  period: 10s
+
+- module: elasticsearch
+  metricsets: ["node", "node_stats", "cluster_stats", "index"]
+  period: 10s
+  hosts: ["elasticsearch:9200"]
+  username: "elastic"
+  password: "elastic"
+
+
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"]
+  username: "elastic"
+  password: "elastic"
+
+setup.kibana:
+  host: "kibana:5601"
+  username: "elastic"
+  password: "elastic"
+
+setup.dashboards.enabled: true
