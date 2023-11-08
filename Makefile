@@ -3,14 +3,14 @@ SHELL := /bin/bash
 help:
 	@echo ""
 	@echo "Commands:"
-	@echo "  start                Iniciar todos os serviços"
-	@echo "  stop                 Parar todos os serviços"
-	@echo "  elasticsearch-logs   Logs do elasticsearch"
-	@echo "  kibana-logs          Logs do kibana"
-	@echo "  metricbeat-logs      Logs do metricbeat"
-	@echo "  heartbeat-logs       Logs do heartbeat"
-	@echo "  app-logs             Logs do app"
-	@echo "  mongodb-logs         Logs do mongodb"
+	@echo " stop                Parar todos os serviços"
+	@echo " app-logs            Logs do app"
+	@echo " start               Iniciar todos os serviços"
+	@echo " kibana-logs         Logs do kibana"
+	@echo " mongodb-logs        Logs do mongodb"
+	@echo " heartbeat-logs      Logs do heartbeat"
+	@echo " metricbeat-logs     Logs do metricbeat"
+	@echo " elasticsearch-logs  Logs do elasticsearch"
 
 
 start:
