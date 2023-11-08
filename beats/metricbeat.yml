@@ -1,9 +1,14 @@
 metricbeat.modules:
-- module: docker
-  metricsets: ["container", "cpu", "diskio", "event", "healthcheck", "image", "info", "memory", "network"]
-  hosts: ["unix:///var/run/docker.sock"]
-  username: "elastic"
-  password: "elastic"
+# - module: docker
+#   metricsets: ["container", "cpu", "diskio", "event", "healthcheck", "image", "info", "memory", "network"]
+#   hosts: ["unix:///var/run/docker.sock"]
+#   username: "elastic"
+#   password: "elastic"
+#   period: 10s
+
+- module: mongodb
+  metricsets: ["dbstats", "status", "collstats", "metrics", "replstatus"]
+  hosts: ["mongodb://root:root@localhost:27017/?authMechanism=DEFAULT"]
   period: 10s
 
 - module: elasticsearch

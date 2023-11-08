@@ -36,7 +36,7 @@ heartbeat-logs:
 	docker logs -f heartbeat
 
 app-logs:
-	docker logs -f app-app-1
+	docker logs -f app
 
 mongodb-logs:
-	docker logs -f app-mongodb-1
+	docker logs -f mongodb

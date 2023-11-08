@@ -2,6 +2,7 @@ version: '3.7'
 
 services:
   mongodb:
+    container_name: mongodb
     image: mongo:latest
     restart: unless-stopped
     env_file: ./.env
@@ -12,11 +13,13 @@ services:
       - $MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT
     volumes:
       - ./db:/data/db
+      - ./.docker:/docker-entrypoint-initdb.d
     networks:
       - observability
     extra_hosts:
       - "host.docker.internal:host-gateway"
   app:
+    container_name: app
     build: .
     depends_on:
       - mongodb

@@ -24,7 +24,9 @@ services:
     ports:
       - 9200:9200
     networks:
-        - observability
+      - observability
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.17.14
@@ -39,7 +41,9 @@ services:
       ELASTICSEARCH_USERNAME: elastic
       ELASTICSEARCH_PASSWORD: elastic
     networks:
-        - observability
+      - observability
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
 
   metricbeat:
     image: docker.elastic.co/beats/metricbeat:7.17.14
@@ -54,6 +58,8 @@ services:
     restart: on-failure
     networks:
       - observability
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   heartbeat:
     image: docker.elastic.co/beats/heartbeat:7.17.14
@@ -64,6 +70,8 @@ services:
     - setup.kibana.host=kibana:5601
     networks:
       - observability
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   apm:
     image: docker.elastic.co/apm/apm-server-oss:7.17.14
@@ -75,6 +83,8 @@ services:
     restart: on-failure
     networks:
       - observability
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 networks:
   observability:
